@@ -6,7 +6,6 @@
     "scripts": {
         "test": "jest",
         "build": "rollup -c",
-        "start": "rollup -c -w",
         "predeploy": "cd example && npm install && npm start"
     },
     "repository": {
@@ -52,6 +51,8 @@
         "unknown-ts": "^0.1.0"
     },
     "dependencies": {
+        "moment": "^2.29.1",
+        "rollup-plugin-import-css": "^2.0.1",
         "rollup-plugin-typescript": "^1.0.1",
         "rollup-plugin-typescript2": "^0.30.0"
     }
