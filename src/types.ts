@@ -1,7 +1,7 @@
 import { NodeColors } from "./components/GraphNode";
 
 export interface NodeData {
-  date: Date;
+  date: Date | string;
   amount: number;
   color?: NodeColors;
   nodeWidth?: number;

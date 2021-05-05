@@ -13,17 +13,13 @@ const GraphNodeTable: React.FC<GraphNodeTableProps> = ({ data }) => {
     const year: NodeData[][] = [];
     let week: NodeData[] = [];
 
-    data.sort(
-      (a: NodeData, b: NodeData) => b.date.getTime() - a.date.getTime()
-    );
-
     for (let d = yearAgo; d <= now; d.setDate(d.getDate() + 1)) {
       const checkIfData: NodeData | undefined = data.find((it: NodeData) =>
-        sameDay(it.date, d)
+        sameDay(new Date(it.date), d)
       );
       const filledData: NodeData = checkIfData ? checkIfData : emptyDay(d);
       week.push(filledData);
-      if (week.length % 7 == 0 || year.length === 365) {
+      if (week.length % 7 == 0 || year.length === 52) {
         year.push(week);
         week = [];
       }
@@ -34,7 +30,7 @@ const GraphNodeTable: React.FC<GraphNodeTableProps> = ({ data }) => {
   const dataParts: NodeData[][] = splitData();
 
   return (
-    <div style={{ display: "flex" }} className="hea">
+    <div style={{ display: "flex" }}>
       {dataParts.map((dataList: NodeData[], idx: number) => (
         <GraphNodeColumn data={dataList} key={idx} />
       ))}
