@@ -6,7 +6,7 @@ interface GraphNodeProps {
 }
 
 export enum NodeColors {
-  WHITE = "white",
+  WHITE = "#ddd",
   GRAY = "#aaa",
   YELLOW = "yellow",
   LIGHTGREEN = "lightgreen",
@@ -22,7 +22,7 @@ const GraphNode: React.FC<GraphNodeProps> = ({ data }) => {
 
   const setColor = (amount: number): NodeColors => {
     let color: NodeColors = NodeColors.WHITE;
-    if (amount > 50) color = NodeColors.DARKRED;
+    if (amount > 100) color = NodeColors.DARKRED;
     else if (amount > 40) color = NodeColors.PURPLE;
     else if (amount > 35) color = NodeColors.ORANGE;
     else if (amount > 30) color = NodeColors.DARKGREEN;
@@ -41,7 +41,8 @@ const GraphNode: React.FC<GraphNodeProps> = ({ data }) => {
         width: nodeWidth ? nodeWidth : "20px",
         height: nodeHeight ? nodeHeight : "20px",
         border: "0.3px black solid",
-        margin: "0.5px",
+        borderRadius: "20%",
+        margin: "1px",
         backgroundColor: useColor,
       }}
     ></div>

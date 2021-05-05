@@ -1,5 +1,4 @@
 import React from "react";
-import { nodedata } from "../testdata/data";
 import { NodeData } from "../types";
 import { emptyDay, now, sameDay, yearAgo } from "../utils/helpers";
 import GraphNodeColumn from "./GraphNodeColumn";

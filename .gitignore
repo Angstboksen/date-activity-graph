@@ -16,6 +16,7 @@ pids
 *.pid.lock
 .env
 index.jsx
+index.jsx.css
 index.jsx.map
 package-lock.json
 
