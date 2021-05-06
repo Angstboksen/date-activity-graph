@@ -2,60 +2,28 @@
     "name": "date-activity-graph",
     "version": "1.0.0",
     "description": "A package used to make a similar graph like githubs, but with your own data",
-    "main": "index.tsx",
-    "scripts": {
-        "test": "jest",
-        "build": "rollup -c",
-        "predeploy": "cd example && npm install && npm start"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/Angstboksen/date-activity-graph.git"
-    },
-    "keywords": [
-        "npm",
-        "activity-graph",
-        "graph",
-        "date-activity-graph"
-    ],
-    "author": "Olaussen",
+    "main": "./lib/cjs/index.js",
+    "module": "./lib/esm/index.js",
+    "types": "./lib/esm/index.d.ts",
+    "repository": "https://github.com/Angstboksen/date-activity-graph.git",
+    "author": "Hauk Olaussen <olaussen@users.noreply.github.com>",
     "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/Angstboksen/date-activity-graph/issues"
+    "scripts": {
+        "build": "yarn build:esm && yarn build:cjs",
+        "build:esm": "tsc",
+        "build:cjs": "tsc --module commonjs --outDir lib/cjs",
+        "testbuild": "yarn build && cd example && yarn && yarn start",
+        "teststart": "cd example yarn start"
     },
-    "homepage": "https://github.com/Angstboksen/date-activity-graph#readme",
+    "peerDependencies": {
+        "react": "^16.8.0",
+        "react-dom": "^16.8.0"
+    },
     "devDependencies": {
-        "@svgr/rollup": "^2.4.1",
-        "@types/jest": "^23.1.5",
-        "@types/react": "^16.3.13",
-        "@types/react-dom": "^16.0.5",
-        "babel-core": "^6.26.3",
-        "babel-plugin-syntax-object-rest-spread": "^6.13.0",
-        "babel-plugin-transform-object-rest-spread": "^6.26.0",
-        "babel-preset-es2015-rollup": "^3.0.0",
-        "babel-runtime": "^6.26.0",
-        "cross-env": "^5.1.4",
-        "gh-pages": "^1.2.0",
-        "react": "^16.4.1",
-        "react-dom": "^16.4.1",
-        "react-scripts-ts": "^2.16.0",
-        "rollup": "^0.62.0",
-        "rollup-plugin-babel": "^4.3.3",
-        "rollup-plugin-commonjs": "^9.1.3",
-        "rollup-plugin-import-css": "^2.0.1",
-        "rollup-plugin-node-resolve": "^3.3.0",
-        "rollup-plugin-peer-deps-external": "^2.2.0",
-        "rollup-plugin-typescript": "^1.0.1",
-        "rollup-plugin-typescript2": "^0.30.0",
-        "rollup-plugin-url": "^1.4.0",
-        "tslint-config-prettier": "^1.18.0",
-        "tslint-plugin-prettier": "^2.1.0",
-        "typescript": "^2.8.3",
-        "unknown-ts": "^0.1.0",
-        "moment": "^2.29.1"
-    },
-    "dependencies": {
-        "rollup-plugin-css-only": "^3.1.0",
-        "rollup-plugin-scss": "^2.6.1"
+        "@types/react": "^17.0.5",
+        "@types/react-dom": "^17.0.3",
+        "react": "^17.0.2",
+        "react-dom": "^17.0.2",
+        "typescript": "^4.2.4"
     }
 }

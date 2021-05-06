@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import { NodeData } from "../types";
 
 interface GraphNodeProps {
@@ -17,10 +17,22 @@ export enum NodeColors {
   DARKRED = "darkred",
 }
 
-const GraphNode: React.FC<GraphNodeProps> = ({ data }) => {
-  const { date, amount, color, nodeWidth, nodeHeight } = data;
+export default class GraphNode extends Component<GraphNodeProps> {
+  amount: number;
+  color: NodeColors;
+  nodeWidth: number | undefined;
+  nodeHeight: number | undefined;
 
-  const setColor = (amount: number): NodeColors => {
+  constructor(props: GraphNodeProps) {
+    super(props);
+    const { amount, color, nodeWidth, nodeHeight } = props.data;
+    this.amount = amount;
+    this.color = color ? color : this.setColor(amount);
+    this.nodeWidth = nodeWidth;
+    this.nodeHeight = nodeHeight;
+  }
+
+  setColor = (amount: number): NodeColors => {
     let color: NodeColors = NodeColors.WHITE;
     if (amount > 100) color = NodeColors.DARKRED;
     else if (amount > 40) color = NodeColors.PURPLE;
@@ -33,20 +45,16 @@ const GraphNode: React.FC<GraphNodeProps> = ({ data }) => {
     return color;
   };
 
-  const useColor: NodeColors = color ? color : setColor(amount);
-
-  return (
+  render = () => (
     <div
       style={{
-        width: nodeWidth ? nodeWidth : "20px",
-        height: nodeHeight ? nodeHeight : "20px",
+        width: this.nodeWidth ? this.nodeWidth : "20px",
+        height: this.nodeHeight ? this.nodeHeight : "20px",
         border: "0.3px black solid",
         borderRadius: "20%",
         margin: "1px",
-        backgroundColor: useColor,
+        backgroundColor: this.color,
       }}
     ></div>
   );
-};
-
-export default GraphNode;
+}

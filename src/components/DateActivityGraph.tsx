@@ -1,10 +1,21 @@
-import React from "react";
-import { nodedata } from "../testdata/data";
+import React, { Component } from "react";
+import { NodeData } from "../types";
 import GraphNodeTable from "./GraphNodeTable";
 import "./main.css";
 
-const DateActivityGraph: React.FC = () => {
-  return (
+export interface GraphNodeTableProps {
+  data: NodeData[];
+}
+
+export default class DataActivityGraph extends Component<GraphNodeTableProps> {
+  data: NodeData[];
+
+  constructor(props: GraphNodeTableProps) {
+    super(props);
+    this.data = props.data;
+  }
+
+  render = () => (
     <div style={{ display: "flex", justifyContent: "center", width: "1150px" }}>
       <div
         style={{
@@ -13,11 +24,8 @@ const DateActivityGraph: React.FC = () => {
           borderRadius: "10px",
         }}
       >
-        <GraphNodeTable data={nodedata} />
+        <GraphNodeTable data={this.data} />
       </div>
-      <p className="red">hejdfskjdhfkjsdhf</p>
     </div>
   );
-};
-
-export default DateActivityGraph;
+}

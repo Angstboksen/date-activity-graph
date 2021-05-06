@@ -1,19 +1,32 @@
-import React from "react";
+import React, { Component } from "react";
 import { NodeData } from "../types";
 import { emptyDay, now, sameDay, yearAgo } from "../utils/helpers";
-import GraphNodeColumn from "./GraphNodeColumn";
+import { GraphNodeTableProps } from "./DateActivityGraph";
+import GraphNodeRow from "./GraphNodeRow";
 
-interface GraphNodeTableProps {
+export default class GraphNodeTable extends Component<GraphNodeTableProps> {
   data: NodeData[];
-}
+  dataParts: NodeData[][];
 
-const GraphNodeTable: React.FC<GraphNodeTableProps> = ({ data }) => {
-  const splitData = (): NodeData[][] => {
+  state = {
+    dataParts: [],
+  };
+
+  constructor(props: GraphNodeTableProps) {
+    super(props);
+    this.data = props.data;
+  }
+
+  componentDidMount() {
+    this.splitData();
+  }
+
+  splitData = (): void => {
     const year: NodeData[][] = [];
     let week: NodeData[] = [];
 
     for (let d = yearAgo; d <= now; d.setDate(d.getDate() + 1)) {
-      const checkIfData: NodeData | undefined = data.find((it: NodeData) =>
+      const checkIfData: NodeData | undefined = this.data.find((it: NodeData) =>
         sameDay(new Date(it.date), d)
       );
       const filledData: NodeData = checkIfData ? checkIfData : emptyDay(d);
@@ -23,18 +36,14 @@ const GraphNodeTable: React.FC<GraphNodeTableProps> = ({ data }) => {
         week = [];
       }
     }
-    return year;
+    this.setState({ dataParts: year });
   };
 
-  const dataParts: NodeData[][] = splitData();
-
-  return (
+  render = () => (
     <div style={{ display: "flex" }}>
-      {dataParts.map((dataList: NodeData[], idx: number) => (
-        <GraphNodeColumn data={dataList} key={idx} />
+      {this.state.dataParts.map((dataList: NodeData[], idx: number) => (
+        <GraphNodeRow data={dataList} key={idx} />
       ))}
     </div>
   );
-};
-
-export default GraphNodeTable;
+}

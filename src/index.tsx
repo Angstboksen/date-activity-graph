@@ -1,6 +1,8 @@
 import DateActivityGraph from "./components/DateActivityGraph";
+import GraphNodeTable from "./components/GraphNodeTable";
+import GraphNodeColumn from "./components/GraphNodeRow";
+import GraphNode from "./components/GraphNode";
 
-// polyfill for `unknown` in newer versions of ts
-import "unknown-ts";
+export { GraphNodeTable, GraphNodeColumn, GraphNode };
 
-export { DateActivityGraph };
+export default DateActivityGraph;

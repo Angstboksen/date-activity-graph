@@ -1,6 +1,4 @@
-import { NodeData } from "../types";
-
-export const nodedata: NodeData[] = [
+export const nodedata = [
   {
     date: "2021/4/1",
     amount: 2144,
