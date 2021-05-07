@@ -15,7 +15,7 @@ export default class GraphNodeRow extends Component<GraphNodeRowProps> {
   }
 
   render = () => (
-    <div style={{ display: "flex", flexDirection: "column" }}>
+    <div className="graph-node-row">
       {this.data.map((it: NodeData, idx: number) => (
         <GraphNode data={it} key={idx} />
       ))}

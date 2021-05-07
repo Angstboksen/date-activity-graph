@@ -8,8 +8,14 @@ export const sameDay = (first: Date, second: Date): boolean => {
   );
 };
 
-export const emptyDay = (date: Date): NodeData => {
-  return { date, amount: 0 };
+export const emptyDay = (count: number): NodeData => {
+  const date: Date = new Date(
+    new Date().setDate(now.getDate() - (365 - count))
+  );
+  return {
+    date,
+    amount: 0,
+  };
 };
 
 export const now = new Date();

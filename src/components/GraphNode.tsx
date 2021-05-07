@@ -18,6 +18,7 @@ export enum NodeColors {
 }
 
 export default class GraphNode extends Component<GraphNodeProps> {
+  date: string;
   amount: number;
   color: NodeColors;
   nodeWidth: number | undefined;
@@ -25,7 +26,8 @@ export default class GraphNode extends Component<GraphNodeProps> {
 
   constructor(props: GraphNodeProps) {
     super(props);
-    const { amount, color, nodeWidth, nodeHeight } = props.data;
+    const { date, amount, color, nodeWidth, nodeHeight } = props.data;
+    this.date = new Date(date).toDateString();
     this.amount = amount;
     this.color = color ? color : this.setColor(amount);
     this.nodeWidth = nodeWidth;
@@ -47,14 +49,19 @@ export default class GraphNode extends Component<GraphNodeProps> {
 
   render = () => (
     <div
+      className="graph-node tooltip"
       style={{
         width: this.nodeWidth ? this.nodeWidth : "20px",
         height: this.nodeHeight ? this.nodeHeight : "20px",
-        border: "0.3px black solid",
-        borderRadius: "20%",
-        margin: "1px",
         backgroundColor: this.color,
       }}
-    ></div>
+    >
+      <span className="tooltiptext">
+        <strong>
+          {this.amount} {this.amount > 0 ? "plays" : "play"}
+        </strong>{" "}
+        on {this.date}
+      </span>
+    </div>
   );
 }

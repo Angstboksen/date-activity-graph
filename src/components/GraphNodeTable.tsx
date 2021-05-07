@@ -24,23 +24,29 @@ export default class GraphNodeTable extends Component<GraphNodeTableProps> {
   splitData = (): void => {
     const year: NodeData[][] = [];
     let week: NodeData[] = [];
+    let count = 0;
 
-    for (let d = yearAgo; d <= now; d.setDate(d.getDate() + 1)) {
+    for (
+      let runningDate = new Date(yearAgo);
+      runningDate <= now;
+      runningDate.setDate(runningDate.getDate() + 1)
+    ) {
       const checkIfData: NodeData | undefined = this.data.find((it: NodeData) =>
-        sameDay(new Date(it.date), d)
+        sameDay(new Date(it.date), runningDate)
       );
-      const filledData: NodeData = checkIfData ? checkIfData : emptyDay(d);
+      const filledData: NodeData = checkIfData ? checkIfData : emptyDay(count);
       week.push(filledData);
-      if (week.length % 7 == 0 || year.length === 52) {
+      if (runningDate.getDay() === 0 || count === 365) {
         year.push(week);
         week = [];
       }
+      count++;
     }
     this.setState({ dataParts: year });
   };
 
   render = () => (
-    <div style={{ display: "flex" }}>
+    <div className="graph-node-table">
       {this.state.dataParts.map((dataList: NodeData[], idx: number) => (
         <GraphNodeRow data={dataList} key={idx} />
       ))}

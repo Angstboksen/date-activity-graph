@@ -1,0 +1,50 @@
+.date-graph-wrapper {
+    background-color: #555;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.graph-node {
+    border: 0.3px black solid;
+    border-radius: 20%;
+    margin: 1px;
+}
+
+.graph-node-table {
+    display: flex;
+}
+
+.graph-node-row {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.graph-node-row:nth-child(1) {
+    top: 72px;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    opacity: 0.8;
+    color: #fff;
+    text-align: center;
+    padding: 5px;
+    border-radius: 6px;
+    position: absolute;
+    bottom: 32px;
+    left: -50px;
+    z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
