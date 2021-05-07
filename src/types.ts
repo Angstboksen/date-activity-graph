@@ -7,3 +7,10 @@ export interface NodeData {
   nodeWidth?: number;
   nodeHeight?: number;
 }
+
+export interface MonthLabelData {
+  month: number;
+  index: number;
+}
+
+export type NodeDataWithMonth = { data: NodeData[]; month: string };

@@ -22,3 +22,18 @@ export const now = new Date();
 export const yearAgo: Date = new Date(
   new Date().setFullYear(new Date().getFullYear() - 1)
 );
+
+export const MONTHS: string[] = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Okt",
+  "Nov",
+  "Des",
+];

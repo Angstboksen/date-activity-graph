@@ -58,7 +58,7 @@ export default class GraphNode extends Component<GraphNodeProps> {
     >
       <span className="tooltiptext">
         <strong>
-          {this.amount} {this.amount > 0 ? "plays" : "play"}
+          {this.amount} {this.amount === 1 ? "play" : "plays"}
         </strong>{" "}
         on {this.date}
       </span>
