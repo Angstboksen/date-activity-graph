@@ -7,6 +7,9 @@ interface GraphNodeRowProps {
   data: NodeData[];
   months: MonthLabelData[];
   index: number;
+  nodeSize: number;
+  colors: string[];
+  colorSteps: number[];
 }
 
 export default class GraphNodeRow extends Component<GraphNodeRowProps> {
@@ -33,7 +36,13 @@ export default class GraphNodeRow extends Component<GraphNodeRowProps> {
   render = () => (
     <div className="graph-node-row">
       {this.data.map((it: NodeData, idx: number) => (
-        <GraphNode data={it} key={idx} />
+        <GraphNode
+          data={it}
+          nodeSize={this.props.nodeSize}
+          colors={this.props.colors}
+          colorSteps={this.props.colorSteps}
+          key={idx}
+        />
       ))}
     </div>
   );

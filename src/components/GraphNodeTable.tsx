@@ -1,8 +1,14 @@
 import React, { Component } from "react";
 import { MonthLabelData, NodeData } from "../types";
 import { emptyDay, now, sameDay, yearAgo } from "../utils/helpers";
-import { GraphNodeTableProps } from "./DateActivityGraph";
 import GraphNodeRow from "./GraphNodeRow";
+
+export interface GraphNodeTableProps {
+  data: NodeData[];
+  nodeSize: number;
+  colors: string[];
+  colorSteps: number[];
+}
 
 export default class GraphNodeTable extends Component<GraphNodeTableProps> {
   data: NodeData[];
@@ -70,6 +76,9 @@ export default class GraphNodeTable extends Component<GraphNodeTableProps> {
         {this.state.dataParts.map((dataList: NodeData[], idx: number) => (
           <GraphNodeRow
             data={dataList}
+            nodeSize={this.props.nodeSize}
+            colors={this.props.colors}
+            colorSteps={this.props.colorSteps}
             index={idx}
             months={this.months}
             key={idx}

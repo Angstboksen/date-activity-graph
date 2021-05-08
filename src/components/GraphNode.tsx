@@ -3,56 +3,45 @@ import { NodeData } from "../types";
 
 interface GraphNodeProps {
   data: NodeData;
-}
-
-export enum NodeColors {
-  WHITE = "#ddd",
-  GRAY = "#aaa",
-  YELLOW = "yellow",
-  LIGHTGREEN = "lightgreen",
-  GREEN = "green",
-  DARKGREEN = "darkgreen",
-  ORANGE = "orange",
-  PURPLE = "purple",
-  DARKRED = "darkred",
+  nodeSize: number;
+  colors: string[];
+  colorSteps: number[];
 }
 
 export default class GraphNode extends Component<GraphNodeProps> {
   date: string;
   amount: number;
-  color: NodeColors;
-  nodeWidth: number | undefined;
-  nodeHeight: number | undefined;
+  color: string;
+  colors: string[];
+  colorSteps: number[];
+  nodeSize: number;
 
   constructor(props: GraphNodeProps) {
     super(props);
-    const { date, amount, color, nodeWidth, nodeHeight } = props.data;
+    const { date, amount } = props.data;
     this.date = new Date(date).toDateString();
     this.amount = amount;
-    this.color = color ? color : this.setColor(amount);
-    this.nodeWidth = nodeWidth;
-    this.nodeHeight = nodeHeight;
+    this.colors = this.props.colors;
+    this.colorSteps = this.props.colorSteps;
+    this.nodeSize = props.nodeSize;
+    this.color = this.setColor(amount);
   }
 
-  setColor = (amount: number): NodeColors => {
-    let color: NodeColors = NodeColors.WHITE;
-    if (amount > 100) color = NodeColors.DARKRED;
-    else if (amount > 40) color = NodeColors.PURPLE;
-    else if (amount > 35) color = NodeColors.ORANGE;
-    else if (amount > 30) color = NodeColors.DARKGREEN;
-    else if (amount > 20) color = NodeColors.GREEN;
-    else if (amount > 15) color = NodeColors.LIGHTGREEN;
-    else if (amount > 10) color = NodeColors.YELLOW;
-    else if (amount > 0) color = NodeColors.GRAY;
-    return color;
+  setColor = (amount: number): string => {
+    for (let i = 0; i < this.colorSteps.length; i++) {
+      if (amount > this.colorSteps[i]) {
+        return this.colors[i];
+      }
+    }
+    return "#aaa";
   };
 
   render = () => (
     <div
       className="graph-node tooltip"
       style={{
-        width: this.nodeWidth ? this.nodeWidth : "20px",
-        height: this.nodeHeight ? this.nodeHeight : "20px",
+        width: `${this.nodeSize}px`,
+        height: `${this.nodeSize}px`,
         backgroundColor: this.color,
       }}
     >
