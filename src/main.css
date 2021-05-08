@@ -32,7 +32,7 @@ ul li {
 }
 
 .graph-node-row:nth-child(1) {
-    top: 72px;
+    justify-content: flex-end;
 }
 
 .tooltip {
