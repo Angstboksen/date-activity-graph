@@ -9,11 +9,12 @@
     "author": "Hauk Olaussen <olaussen@users.noreply.github.com>",
     "license": "MIT",
     "scripts": {
-        "build": "del /f /s /q lib 1>nul && rmdir /s /q lib && yarn build:esm && yarn build:cjs",
+        "build": "yarn build:esm && yarn build:cjs",
+        "cleanbuild": "del /f /s /q lib 1>nul && rmdir /s /q lib && yarn build",
         "build:esm": "tsc",
         "build:cjs": "tsc --module commonjs --outDir lib/cjs",
-        "testbuild": "yarn build && cd example && yarn && yarn start",
-        "teststart": "cd example yarn start"
+        "testbuild": "yarn cleanbuild && cd example && yarn",
+        "teststart": "yarn testbuild && yarn start"
     },
     "peerDependencies": {
         "react": "^16.8.0",
