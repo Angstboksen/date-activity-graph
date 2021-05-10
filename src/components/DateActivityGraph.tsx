@@ -1,33 +1,31 @@
 import React, { Component } from "react";
-import { DateActivityGraphProps, NodeData } from "../types";
+import { DateActivityGraphProps, NodeData, DateGraphColor } from "../types";
 import GraphNodeTable from "./GraphNodeTable";
 import "../main.css";
 
-export const defaultNodeColors: string[] = [
-  "#1f7ef5",
-  "#8c6de4",
-  "#8ac702",
-  "#0bbe1f",
-  "#ef7fa9",
-  "#be2d6a",
+export const defaultNodeColors: DateGraphColor[] = [
+  { amount: 0, color: "#1f7ef5" },
+  { amount: 10, color: "#4055d7" },
+  { amount: 20, color: "#3d26b3" },
+  { amount: 30, color: "#392193" },
+  { amount: 40, color: "#291b6e" },
+  { amount: 50, color: "#1a0d36" },
 ];
-
-export const defaultNodeColorSteps: number[] = [0, 15, 30, 45, 60, 75];
 
 export default class DataActivityGraph extends Component<DateActivityGraphProps> {
   data: NodeData[];
   nodeSize: number;
-  colors: string[];
-  colorSteps: number[];
+  colors: DateGraphColor[];
 
   constructor(props: DateActivityGraphProps) {
     super(props);
-    const { data, nodeSize, colors, colorSteps } = props;
+    const { data, nodeSize, colors } = props;
     this.data = data;
     this.nodeSize = nodeSize ? nodeSize : 20;
     this.colors = colors ? colors : defaultNodeColors;
-    this.colorSteps = colorSteps ? colorSteps : defaultNodeColorSteps;
-    this.colorSteps.sort((a, b) => b - a);
+    this.colors.sort(
+      (a: DateGraphColor, b: DateGraphColor) => b.amount - a.amount
+    );
   }
 
   render = () => (
@@ -37,7 +35,6 @@ export default class DataActivityGraph extends Component<DateActivityGraphProps>
           data={this.data}
           nodeSize={this.nodeSize}
           colors={this.colors}
-          colorSteps={this.colorSteps}
         />
       </div>
     </div>

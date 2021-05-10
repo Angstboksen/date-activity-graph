@@ -1,31 +1,32 @@
 export interface DateActivityGraphProps {
   data: NodeData[];
   nodeSize?: number;
-  colors?: string[];
-  colorSteps?: number[];
+  colors?: DateGraphColor[];
 }
 
 export interface GraphNodeProps {
   data: NodeData;
   nodeSize: number;
-  colors: string[];
-  colorSteps: number[];
+  colors: DateGraphColor[];
 }
+
+export type DateGraphColor = {
+  amount: number;
+  color: string;
+};
 
 export interface GraphNodeRowProps {
   data: NodeData[];
   months: MonthLabelData[];
   index: number;
   nodeSize: number;
-  colors: string[];
-  colorSteps: number[];
+  colors: DateGraphColor[];
 }
 
 export interface GraphNodeTableProps {
   data: NodeData[];
   nodeSize: number;
-  colors: string[];
-  colorSteps: number[];
+  colors: DateGraphColor[];
 }
 
 export interface NodeData {

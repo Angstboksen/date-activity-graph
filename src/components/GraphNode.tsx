@@ -1,12 +1,11 @@
 import React, { Component } from "react";
-import { GraphNodeProps, NodeData } from "../types";
+import { DateGraphColor, GraphNodeProps } from "../types";
 
 export default class GraphNode extends Component<GraphNodeProps> {
   date: string;
   amount: number;
   color: string;
-  colors: string[];
-  colorSteps: number[];
+  colors: DateGraphColor[];
   nodeSize: number;
 
   constructor(props: GraphNodeProps) {
@@ -15,15 +14,14 @@ export default class GraphNode extends Component<GraphNodeProps> {
     this.date = new Date(date).toDateString();
     this.amount = amount;
     this.colors = this.props.colors;
-    this.colorSteps = this.props.colorSteps;
     this.nodeSize = props.nodeSize;
     this.color = this.setColor(amount);
   }
 
   setColor = (amount: number): string => {
-    for (let i = 0; i < this.colorSteps.length; i++) {
-      if (amount > this.colorSteps[i]) {
-        return this.colors[i];
+    for (let i = 0; i < this.colors.length; i++) {
+      if (amount > this.colors[i].amount) {
+        return this.colors[i].color;
       }
     }
     return "#aaa";

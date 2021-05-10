@@ -31,7 +31,6 @@ export default class GraphNodeRow extends Component<GraphNodeRowProps> {
           data={it}
           nodeSize={this.props.nodeSize}
           colors={this.props.colors}
-          colorSteps={this.props.colorSteps}
           key={idx}
         />
       ))}
