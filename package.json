@@ -10,7 +10,7 @@
     "license": "MIT",
     "scripts": {
         "build": "yarn build:esm && yarn build:cjs",
-        "cleanbuild": "del /f /s /q lib 1>nul && rmdir /s /q lib && yarn build",
+        "cleanbuild": "yarn build && copy src\\main.css lib\\esm ",
         "build:esm": "tsc",
         "build:cjs": "tsc --module commonjs --outDir lib/cjs",
         "demostart": "yarn cleanbuild && cd example && yarn && yarn start"

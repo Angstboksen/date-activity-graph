@@ -1,6 +1,11 @@
 import React, { Component } from "react";
-import { GraphNodeTableProps, MonthLabelData, NodeData } from "../types";
-import { emptyDay, now, sameDay, yearAgo } from "../utils/helpers";
+import {
+  GraphNodeTableProps,
+  MonthLabelData,
+  NodeData,
+  WeekdayNodeRowProps,
+} from "../types";
+import { emptyDay, now, sameDay, WEEKDAYS, yearAgo } from "../utils/helpers";
 import GraphNodeRow from "./GraphNodeRow";
 
 export default class GraphNodeTable extends Component<GraphNodeTableProps> {
@@ -55,7 +60,6 @@ export default class GraphNodeTable extends Component<GraphNodeTableProps> {
       }
       count++;
     }
-    console.log(this.months);
     this.months.push({
       ...this.months[0],
       index: this.months[this.months.length - 1].index + 4,
@@ -65,6 +69,7 @@ export default class GraphNodeTable extends Component<GraphNodeTableProps> {
 
   render = () => (
     <div className="graph-node-wrapper">
+      <WeekdayNodeRow nodeSize={this.props.nodeSize} />
       <div className="graph-node-table">
         {this.state.dataParts.map((dataList: NodeData[], idx: number) => (
           <GraphNodeRow
@@ -73,6 +78,7 @@ export default class GraphNodeTable extends Component<GraphNodeTableProps> {
             colors={this.props.colors}
             index={idx}
             months={this.months}
+            onClick={this.props.onClick}
             key={idx}
           />
         ))}
@@ -80,3 +86,24 @@ export default class GraphNodeTable extends Component<GraphNodeTableProps> {
     </div>
   );
 }
+
+const WeekdayNodeRow: React.FC<WeekdayNodeRowProps> = ({ nodeSize }) => {
+  return (
+    <div className="weekday-row graph-node-row">
+      {WEEKDAYS.map((day: string) => (
+        <div
+          style={{
+            width: `${nodeSize}px`,
+            height: `${nodeSize}px`,
+            border: "0.3px",
+            margin: "1px",
+            display: "inline-block",
+            color: "#ddd",
+          }}
+        >
+          {day}
+        </div>
+      ))}
+    </div>
+  );
+};

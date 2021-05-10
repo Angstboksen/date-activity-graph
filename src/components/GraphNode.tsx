@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { DateGraphColor, GraphNodeProps } from "../types";
+import { DateGraphColor, GraphNodeProps, NodeData } from "../types";
 
 export default class GraphNode extends Component<GraphNodeProps> {
   date: string;
@@ -7,6 +7,7 @@ export default class GraphNode extends Component<GraphNodeProps> {
   color: string;
   colors: DateGraphColor[];
   nodeSize: number;
+  onClick: Function | undefined;
 
   constructor(props: GraphNodeProps) {
     super(props);
@@ -16,6 +17,7 @@ export default class GraphNode extends Component<GraphNodeProps> {
     this.colors = this.props.colors;
     this.nodeSize = props.nodeSize;
     this.color = this.setColor(amount);
+    this.onClick = this.props.onClick;
   }
 
   setColor = (amount: number): string => {
@@ -27,6 +29,16 @@ export default class GraphNode extends Component<GraphNodeProps> {
     return "#aaa";
   };
 
+  handleClick = () => {
+    if (this.onClick) {
+      const callbackData: NodeData = {
+        date: this.date,
+        amount: this.amount,
+      };
+      this.onClick(callbackData);
+    }
+  };
+
   render = () => (
     <div
       className="graph-node tooltip"
@@ -35,6 +47,7 @@ export default class GraphNode extends Component<GraphNodeProps> {
         height: `${this.nodeSize}px`,
         backgroundColor: this.color,
       }}
+      onClick={this.handleClick}
     >
       <span className="tooltiptext">
         <strong>

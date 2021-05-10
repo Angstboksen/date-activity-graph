@@ -10,6 +10,11 @@ ul li {
     border-radius: 10px;
 }
 
+.graph-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
 .graph-node {
     border: 0.3px black solid;
     border-radius: 20%;
@@ -18,7 +23,6 @@ ul li {
 
 .graph-node-wrapper {
     display: flex;
-    flex-direction: column;
 }
 
 .graph-node-table {
@@ -29,10 +33,20 @@ ul li {
     position: relative;
     display: flex;
     flex-direction: column;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.weekday-row {
+    margin-right: 15px;
 }
 
 .graph-node-row:nth-child(1) {
-    justify-content: flex-end;
+    justify-content: space-between;
 }
 
 .tooltip {

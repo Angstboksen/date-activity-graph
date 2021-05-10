@@ -37,3 +37,5 @@ export const MONTHS: string[] = [
   "Nov",
   "Des",
 ];
+
+export const WEEKDAYS: string[] = ["", "", "Tue", "", "Thu", "", "Sat", ""];

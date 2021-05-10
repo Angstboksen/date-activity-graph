@@ -1,5 +1,10 @@
 import React, { Component } from "react";
-import { GraphNodeRowProps, MonthLabelData, NodeData } from "../types";
+import {
+  GraphNodeRowProps,
+  MonthLabelData,
+  MonthNodeProps,
+  NodeData,
+} from "../types";
 import { MONTHS } from "../utils/helpers";
 import GraphNode from "./GraphNode";
 
@@ -26,14 +31,34 @@ export default class GraphNodeRow extends Component<GraphNodeRowProps> {
 
   render = () => (
     <div className="graph-node-row">
+      <MonthNode month={this.month} nodeSize={this.props.nodeSize} />
       {this.data.map((it: NodeData, idx: number) => (
         <GraphNode
           data={it}
           nodeSize={this.props.nodeSize}
           colors={this.props.colors}
+          onClick={this.props.onClick}
           key={idx}
         />
       ))}
     </div>
   );
 }
+
+const MonthNode: React.FC<MonthNodeProps> = ({ month, nodeSize }) => {
+  return (
+    <div
+      style={{
+        width: `${nodeSize}px`,
+        height: `${nodeSize}px`,
+        color: "#ddd",
+        margin: "5px 0",
+        paddingLeft: "3px",
+
+        transform: "rotate(-90deg)",
+      }}
+    >
+      {month}
+    </div>
+  );
+};
