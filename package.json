@@ -13,8 +13,7 @@
         "cleanbuild": "del /f /s /q lib 1>nul && rmdir /s /q lib && yarn build",
         "build:esm": "tsc",
         "build:cjs": "tsc --module commonjs --outDir lib/cjs",
-        "testbuild": "yarn cleanbuild && cd example && yarn",
-        "teststart": "yarn testbuild && yarn start"
+        "demostart": "yarn cleanbuild && cd example && yarn && yarn start"
     },
     "peerDependencies": {
         "react": "^16.8.0",

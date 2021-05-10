@@ -1,12 +1,5 @@
 import React, { Component } from "react";
-import { NodeData } from "../types";
-
-interface GraphNodeProps {
-  data: NodeData;
-  nodeSize: number;
-  colors: string[];
-  colorSteps: number[];
-}
+import { GraphNodeProps, NodeData } from "../types";
 
 export default class GraphNode extends Component<GraphNodeProps> {
   date: string;

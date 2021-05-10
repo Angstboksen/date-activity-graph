@@ -1,14 +1,7 @@
 import React, { Component } from "react";
-import { NodeData } from "../types";
+import { DateActivityGraphProps, NodeData } from "../types";
 import GraphNodeTable from "./GraphNodeTable";
 import "../main.css";
-
-export interface DateActivityGraphProps {
-  data: NodeData[];
-  nodeSize?: number;
-  colors?: string[];
-  colorSteps?: number[];
-}
 
 export const defaultNodeColors: string[] = [
   "#1f7ef5",

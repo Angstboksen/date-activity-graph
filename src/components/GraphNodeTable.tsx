@@ -1,14 +1,7 @@
 import React, { Component } from "react";
-import { MonthLabelData, NodeData } from "../types";
+import { GraphNodeTableProps, MonthLabelData, NodeData } from "../types";
 import { emptyDay, now, sameDay, yearAgo } from "../utils/helpers";
 import GraphNodeRow from "./GraphNodeRow";
-
-export interface GraphNodeTableProps {
-  data: NodeData[];
-  nodeSize: number;
-  colors: string[];
-  colorSteps: number[];
-}
 
 export default class GraphNodeTable extends Component<GraphNodeTableProps> {
   data: NodeData[];

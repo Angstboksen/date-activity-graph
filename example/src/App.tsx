@@ -6,7 +6,7 @@ import "./main.css";
 function App() {
   return (
     <div className="App">
-      <DateActivityGraph data={nodedata} />
+      <DateActivityGraph data={nodedata}/>
     </div>
   );
 }

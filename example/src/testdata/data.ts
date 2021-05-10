@@ -1,7 +1,47 @@
 export const nodedata = [
   {
-    date: "2021/4/1",
-    amount: 2144,
+    date: "2020/7/1",
+    amount: 0,
+  },
+  {
+    date: "2020/7/2",
+    amount: 1,
+  },
+  {
+    date: "2020/7/3",
+    amount: 10,
+  },
+  {
+    date: "2020/7/4",
+    amount: 20,
+  },
+  {
+    date: "2020/7/5",
+    amount: 30,
+  },
+  {
+    date: "2020/7/6",
+    amount: 40,
+  },
+  {
+    date: "2020/7/7",
+    amount: 50,
+  },
+  {
+    date: "2020/7/8",
+    amount: 60,
+  },
+  {
+    date: "2020/7/9",
+    amount: 70,
+  },
+  {
+    date: "2020/7/10",
+    amount: 80,
+  },
+  {
+    date: "2020/7/11",
+    amount: 90,
   },
   {
     date: "2021/4/29",
