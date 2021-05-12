@@ -33,6 +33,9 @@ ul li {
     position: relative;
     display: flex;
     flex-direction: column;
+}
+
+.not-selectable {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -43,10 +46,20 @@ ul li {
 
 .weekday-row {
     margin-right: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.weekday-node {
+    border: 0.3px solid black;
+    margin: 1px;
+    display: inline-block;
+    color: #ddd;
 }
 
 .graph-node-row:nth-child(1) {
-    justify-content: space-between;
+    justify-content: flex-end;
 }
 
 .tooltip {

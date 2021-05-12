@@ -2,7 +2,6 @@ export interface DateActivityGraphProps {
   data: NodeData[];
   nodeSize?: number;
   colors?: DateGraphColor[];
-  width?: number;
   height?: number;
   onClick?: (data: NodeData) => void;
 }

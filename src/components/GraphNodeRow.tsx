@@ -30,7 +30,7 @@ export default class GraphNodeRow extends Component<GraphNodeRowProps> {
   };
 
   render = () => (
-    <div className="graph-node-row">
+    <div className="graph-node-row not-selectable">
       <MonthNode month={this.month} nodeSize={this.props.nodeSize} />
       {this.data.map((it: NodeData, idx: number) => (
         <GraphNode
@@ -54,7 +54,6 @@ const MonthNode: React.FC<MonthNodeProps> = ({ month, nodeSize }) => {
         color: "#ddd",
         margin: "5px 0",
         paddingLeft: "3px",
-
         transform: "rotate(-90deg)",
       }}
     >

@@ -36,16 +36,16 @@ export default class GraphNodeTable extends Component<GraphNodeTableProps> {
       runningDate <= now;
       runningDate.setDate(runningDate.getDate() + 1)
     ) {
+      const currentMonth: number = runningDate.getMonth();
       if (
-        !this.months.find(
-          (curr: MonthLabelData) => curr.month === runningDate.getMonth()
-        )
+        !this.months.find((curr: MonthLabelData) => curr.month === currentMonth)
       ) {
         const created: MonthLabelData = {
-          month: runningDate.getMonth(),
+          month: currentMonth,
           index: year.length,
         };
-        this.months.push(created);
+        if (currentMonth !== now.getMonth() || this.months.length > 0)
+          this.months.push(created);
       }
       const checkIfData: NodeData | undefined = this.data.find((it: NodeData) =>
         sameDay(new Date(it.date), runningDate)
@@ -60,10 +60,6 @@ export default class GraphNodeTable extends Component<GraphNodeTableProps> {
       }
       count++;
     }
-    this.months.push({
-      ...this.months[0],
-      index: this.months[this.months.length - 1].index + 4,
-    });
     this.setState({ dataParts: year });
   };
 
@@ -89,16 +85,13 @@ export default class GraphNodeTable extends Component<GraphNodeTableProps> {
 
 const WeekdayNodeRow: React.FC<WeekdayNodeRowProps> = ({ nodeSize }) => {
   return (
-    <div className="weekday-row graph-node-row">
+    <div className="weekday-row">
       {WEEKDAYS.map((day: string) => (
         <div
+          className="weekday-node not-selectable"
           style={{
             width: `${nodeSize}px`,
             height: `${nodeSize}px`,
-            border: "0.3px",
-            margin: "1px",
-            display: "inline-block",
-            color: "#ddd",
           }}
         >
           {day}

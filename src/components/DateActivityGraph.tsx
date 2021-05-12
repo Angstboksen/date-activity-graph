@@ -14,16 +14,12 @@ export const defaultNodeColors: DateGraphColor[] = [
 ];
 
 export default class DataActivityGraph extends Component<DateActivityGraphProps> {
-  width: number;
-  height: number;
   nodeSize: number;
   colors: DateGraphColor[];
 
   constructor(props: DateActivityGraphProps) {
     super(props);
-    const { width, height, nodeSize, colors } = props;
-    this.width = width ? width : 1150;
-    this.height = height ? height : 220;
+    const { nodeSize, colors } = props;
     this.nodeSize = nodeSize ? nodeSize : 20;
     this.colors = colors ? colors : defaultNodeColors;
     this.colors.sort(
@@ -32,10 +28,7 @@ export default class DataActivityGraph extends Component<DateActivityGraphProps>
   }
 
   render = () => (
-    <div
-      className="graph-wrapper"
-      style={{ width: this.width, height: this.height }}
-    >
+    <div className="graph-wrapper">
       <div className="date-graph-wrapper">
         <GraphNodeTable
           data={this.props.data}
