@@ -54,7 +54,6 @@ ul li {
     border: 0.3px solid transparent;
     margin: 1px;
     display: inline-block;
-    color: #ddd;
 }
 
 .graph-node-row:nth-child(1) {
@@ -71,9 +70,7 @@ ul li {
     visibility: hidden;
     width: 210px;
     height: 20px;
-    background-color: black;
     opacity: 0.8;
-    color: #fff;
     text-align: center;
     padding: 5px;
     border-radius: 6px;

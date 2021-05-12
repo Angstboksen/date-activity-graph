@@ -6,7 +6,10 @@ import "./main.css";
 function App() {
   return (
     <div className="App">
-      <DateActivityGraph data={nodedata} onClick={(data: any) => console.log(data)}/>
+      <DateActivityGraph
+        data={nodedata}
+        onClick={(data: any) => console.log(data)}
+      />
     </div>
   );
 }

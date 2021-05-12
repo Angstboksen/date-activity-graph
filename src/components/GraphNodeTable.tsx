@@ -65,7 +65,10 @@ export default class GraphNodeTable extends Component<GraphNodeTableProps> {
 
   render = () => (
     <div className="graph-node-wrapper">
-      <WeekdayNodeRow nodeSize={this.props.nodeSize} />
+      <WeekdayNodeRow
+        nodeSize={this.props.nodeSize}
+        labelColor={this.props.labelColor}
+      />
       <div className="graph-node-table">
         {this.state.dataParts.map((dataList: NodeData[], idx: number) => (
           <GraphNodeRow
@@ -75,6 +78,8 @@ export default class GraphNodeTable extends Component<GraphNodeTableProps> {
             index={idx}
             months={this.months}
             defaultColor={this.props.defaultColor}
+            labelColor={this.props.labelColor}
+            tooltipLabelNames={this.props.tooltipLabelNames}
             onClick={this.props.onClick}
             key={idx}
           />
@@ -84,7 +89,10 @@ export default class GraphNodeTable extends Component<GraphNodeTableProps> {
   );
 }
 
-const WeekdayNodeRow: React.FC<WeekdayNodeRowProps> = ({ nodeSize }) => {
+const WeekdayNodeRow: React.FC<WeekdayNodeRowProps> = ({
+  nodeSize,
+  labelColor,
+}) => {
   return (
     <div className="weekday-row">
       {WEEKDAYS.map((day: string) => (
@@ -93,6 +101,7 @@ const WeekdayNodeRow: React.FC<WeekdayNodeRowProps> = ({ nodeSize }) => {
           style={{
             width: `${nodeSize}px`,
             height: `${nodeSize}px`,
+            color: labelColor,
           }}
         >
           {day}

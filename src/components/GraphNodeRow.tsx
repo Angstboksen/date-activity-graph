@@ -31,13 +31,19 @@ export default class GraphNodeRow extends Component<GraphNodeRowProps> {
 
   render = () => (
     <div className="graph-node-row not-selectable">
-      <MonthNode month={this.month} nodeSize={this.props.nodeSize} />
+      <MonthNode
+        month={this.month}
+        nodeSize={this.props.nodeSize}
+        labelColor={this.props.labelColor}
+      />
       {this.data.map((it: NodeData, idx: number) => (
         <GraphNode
           data={it}
           nodeSize={this.props.nodeSize}
           colors={this.props.colors}
           defaultColor={this.props.defaultColor}
+          labelColor={this.props.labelColor}
+          tooltipLabelNames={this.props.tooltipLabelNames}
           onClick={this.props.onClick}
           key={idx}
         />
@@ -46,13 +52,17 @@ export default class GraphNodeRow extends Component<GraphNodeRowProps> {
   );
 }
 
-const MonthNode: React.FC<MonthNodeProps> = ({ month, nodeSize }) => {
+const MonthNode: React.FC<MonthNodeProps> = ({
+  month,
+  nodeSize,
+  labelColor,
+}) => {
   return (
     <div
       style={{
         width: `${nodeSize}px`,
         height: `${nodeSize}px`,
-        color: "#ddd",
+        color: labelColor,
         margin: "5px 0",
         paddingLeft: "3px",
         transform: "rotate(-90deg)",
