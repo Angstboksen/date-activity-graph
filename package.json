@@ -1,6 +1,6 @@
 {
     "name": "date-activity-graph",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "A package used to make a similar graph like githubs, but with your own data",
     "main": "./lib/cjs/index.js",
     "module": "./lib/esm/index.js",
@@ -27,5 +27,4 @@
     "publishConfig": {
         "registry": "https://npm.pkg.github.com"
     }
-
 }
