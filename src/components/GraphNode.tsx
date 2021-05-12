@@ -7,6 +7,7 @@ export default class GraphNode extends Component<GraphNodeProps> {
   color: string;
   colors: DateGraphColor[];
   nodeSize: number;
+  defaultColor: string;
   onClick: Function | undefined;
 
   constructor(props: GraphNodeProps) {
@@ -17,6 +18,7 @@ export default class GraphNode extends Component<GraphNodeProps> {
     this.colors = this.props.colors;
     this.nodeSize = props.nodeSize;
     this.color = this.setColor(amount);
+    this.defaultColor = this.props.defaultColor;
     this.onClick = this.props.onClick;
   }
 
@@ -26,7 +28,7 @@ export default class GraphNode extends Component<GraphNodeProps> {
         return this.colors[i].color;
       }
     }
-    return "#aaa";
+    return this.props.defaultColor;
   };
 
   handleClick = () => {

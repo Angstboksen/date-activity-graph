@@ -16,24 +16,32 @@ export const defaultNodeColors: DateGraphColor[] = [
 export default class DataActivityGraph extends Component<DateActivityGraphProps> {
   nodeSize: number;
   colors: DateGraphColor[];
+  background: string;
+  defaultColor: string;
 
   constructor(props: DateActivityGraphProps) {
     super(props);
-    const { nodeSize, colors } = props;
+    const { nodeSize, colors, background, defaultColor } = props;
     this.nodeSize = nodeSize ? nodeSize : 20;
     this.colors = colors ? colors : defaultNodeColors;
     this.colors.sort(
       (a: DateGraphColor, b: DateGraphColor) => b.amount - a.amount
     );
+    this.defaultColor = defaultColor ? defaultColor : "#bbb";
+    this.background = background ? background : "#555";
   }
 
   render = () => (
     <div className="graph-wrapper">
-      <div className="date-graph-wrapper">
+      <div
+        className="date-graph-wrapper"
+        style={{ background: this.background }}
+      >
         <GraphNodeTable
           data={this.props.data}
           nodeSize={this.nodeSize}
           colors={this.colors}
+          defaultColor={this.defaultColor}
           onClick={this.props.onClick}
         />
       </div>

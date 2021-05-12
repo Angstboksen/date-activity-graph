@@ -2,7 +2,8 @@ export interface DateActivityGraphProps {
   data: NodeData[];
   nodeSize?: number;
   colors?: DateGraphColor[];
-  height?: number;
+  background?: string;
+  defaultColor?: string;
   onClick?: (data: NodeData) => void;
 }
 
@@ -10,6 +11,7 @@ export interface GraphNodeProps {
   data: NodeData;
   nodeSize: number;
   colors: DateGraphColor[];
+  defaultColor: string;
   onClick?: (data: NodeData) => void;
 }
 
@@ -19,6 +21,7 @@ export interface GraphNodeRowProps {
   index: number;
   nodeSize: number;
   colors: DateGraphColor[];
+  defaultColor: string;
   onClick?: (data: NodeData) => void;
 }
 
@@ -26,6 +29,7 @@ export interface GraphNodeTableProps {
   data: NodeData[];
   nodeSize: number;
   colors: DateGraphColor[];
+  defaultColor: string;
   onClick?: (data: NodeData) => void;
 }
 

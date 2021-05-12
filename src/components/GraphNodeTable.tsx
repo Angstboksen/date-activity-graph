@@ -74,6 +74,7 @@ export default class GraphNodeTable extends Component<GraphNodeTableProps> {
             colors={this.props.colors}
             index={idx}
             months={this.months}
+            defaultColor={this.props.defaultColor}
             onClick={this.props.onClick}
             key={idx}
           />
