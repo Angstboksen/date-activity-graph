@@ -74,6 +74,14 @@ interface DateActivityGraphProps {
 }
 ```
 
+The DateGraphColor type has this structure:
+```ts
+type DateGraphColor = {
+  amount: number;
+  color: string;
+};
+```
+
 ## 🎈Examples
 
 ### Red background and blue labels
