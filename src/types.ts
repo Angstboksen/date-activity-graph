@@ -55,9 +55,6 @@ export interface WeekdayNodeRowProps {
 export interface NodeData {
   date: Date | string;
   amount: number;
-  color?: string;
-  nodeWidth?: number;
-  nodeHeight?: number;
 }
 
 export type DateGraphColor = {
