@@ -37,9 +37,11 @@ export default class DataActivityGraph extends Component<DateActivityGraphProps>
     );
     this.defaultColor = defaultColor ? defaultColor : "#bbb";
     this.background = background ? background : "#555";
-    this.tooltipLabelNames = tooltipLabelNames ? tooltipLabelNames : ["play", "plays"];
-    if(this.tooltipLabelNames.length !== 2) 
-    throw new Error("labelNames has to be an array of two strings")
+    this.tooltipLabelNames = tooltipLabelNames
+      ? tooltipLabelNames
+      : ["play", "plays"];
+    if (this.tooltipLabelNames.length !== 2)
+      throw new Error("labelNames has to be an array of two strings");
     this.labelColor = labelColor ? labelColor : "#ddd";
   }
 
