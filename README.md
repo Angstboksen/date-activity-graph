@@ -20,7 +20,7 @@ npm i date-activity-graph
 
 ### ✨Basic
 
-The only thing you need is to provide an array with object having a date and the amount of hits (this will determine the color).
+The only thing you need is to provide an array with objects having a date and the amount of hits (this will determine the color).
 
 The NodeData interface has this structure:
 
