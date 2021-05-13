@@ -101,12 +101,13 @@ const Root: React.FC = () => {
 ```tsx
 import DateActivityGraph from "date-activity-graph";
 
+const Root: React.FC = () => {
+
 const colors: DateGraphColor[] = [
   { amount: 5, color: "blue" },
   { amount: 10, color: "red" },
 ];
 
-const Root: React.FC = () => {
   return (
     <DateActivityGraph defaultColor="yellow" colors={colors} data={nodedata} />
   );
@@ -118,9 +119,10 @@ const Root: React.FC = () => {
 ```tsx
 import DateActivityGraph from "date-activity-graph";
 
-const labels: string[] = ["hit", "hits"] // The first one will occur when it the day only has one hit
-
 const Root: React.FC = () => {
+
+const labels: string[] = ["hit", "hits"] // The first one will occur when the day only has one hit
+
   return (
     <DateActivityGraph tooltipLabelNames={labels} data={nodedata} />
   );
