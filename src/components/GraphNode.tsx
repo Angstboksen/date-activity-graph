@@ -9,7 +9,7 @@ export default class GraphNode extends Component<GraphNodeProps> {
   nodeSize: number;
   defaultColor: string;
   tooltipLabelNames: string[];
-  tooltipBackground: string
+  tooltipBackground: string;
   labelColor: string;
   onClick: Function | undefined;
 
@@ -23,7 +23,7 @@ export default class GraphNode extends Component<GraphNodeProps> {
     this.color = this.setColor(amount);
     this.defaultColor = this.props.defaultColor;
     this.tooltipLabelNames = this.props.tooltipLabelNames;
-    this.tooltipBackground = "black"
+    this.tooltipBackground = "black";
     this.labelColor = this.props.labelColor;
     this.onClick = this.props.onClick;
   }
@@ -57,7 +57,7 @@ export default class GraphNode extends Component<GraphNodeProps> {
       }}
       onClick={this.handleClick}
     >
-      <span
+      <p
         style={{ background: this.tooltipBackground, color: this.labelColor }}
         className="tooltiptext"
       >
@@ -68,7 +68,7 @@ export default class GraphNode extends Component<GraphNodeProps> {
             : this.tooltipLabelNames[1]}
         </strong>{" "}
         on {this.date}
-      </span>
+      </p>
     </div>
   );
 }

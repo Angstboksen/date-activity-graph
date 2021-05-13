@@ -8,9 +8,10 @@
     "repository": "https://github.com/Angstboksen/date-activity-graph.git",
     "author": "Hauk Olaussen <olaussen@users.noreply.github.com>",
     "license": "MIT",
+    "keywords": ["activity", "graph", "github", "date-activity", "date-graph"],
     "scripts": {
         "build": "yarn build:esm && yarn build:cjs",
-        "cleanbuild": "yarn build && copy src\\main.css lib\\esm ",
+        "cleanbuild": "yarn build && copy src\\main.css lib\\esm && copy src\\main.css lib\\cjs ",
         "build:esm": "tsc",
         "build:cjs": "tsc --module commonjs --outDir lib/cjs",
         "demostart": "yarn cleanbuild && cd example && yarn && yarn start"

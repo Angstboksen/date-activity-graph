@@ -17,7 +17,6 @@ npm i date-activity-graph
 
 ![image](https://user-images.githubusercontent.com/41127847/118047027-74175400-b37a-11eb-848d-65a0e954b90c.png)
 
-
 ### ✨Basic
 
 The only thing you need is to provide an array with objects having a date and the amount of hits (this will determine the color).
@@ -75,6 +74,7 @@ interface DateActivityGraphProps {
 ```
 
 The DateGraphColor type has this structure:
+
 ```ts
 type DateGraphColor = {
   amount: number;
@@ -102,11 +102,10 @@ const Root: React.FC = () => {
 import DateActivityGraph from "date-activity-graph";
 
 const Root: React.FC = () => {
-
-const colors: DateGraphColor[] = [
-  { amount: 5, color: "blue" },
-  { amount: 10, color: "red" },
-];
+  const colors: DateGraphColor[] = [
+    { amount: 5, color: "blue" },
+    { amount: 10, color: "red" },
+  ];
 
   return (
     <DateActivityGraph defaultColor="yellow" colors={colors} data={nodedata} />
@@ -120,12 +119,9 @@ const colors: DateGraphColor[] = [
 import DateActivityGraph from "date-activity-graph";
 
 const Root: React.FC = () => {
+  const labels: string[] = ["hit", "hits"]; // The first one will occur when the day only has one hit
 
-const labels: string[] = ["hit", "hits"] // The first one will occur when the day only has one hit
-
-  return (
-    <DateActivityGraph tooltipLabelNames={labels} data={nodedata} />
-  );
+  return <DateActivityGraph tooltipLabelNames={labels} data={nodedata} />;
 };
 ```
 
